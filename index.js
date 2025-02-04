@@ -1,4 +1,3 @@
-import { process } from '/env'
 import { OpenAI } from "openai";
 
 
@@ -7,8 +6,10 @@ const setupInputContainer = document.getElementById('setup-input-container')
 const movieBossText = document.getElementById('movie-boss-text')
 
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY ,dangerouslyAllowBrowser: true});
-
+const openai = new OpenAI({ 
+    apiKey: import.meta.env.VITE_OPENAI_API_KEY,
+    dangerouslyAllowBrowser: true 
+});
 document.getElementById("send-btn").addEventListener("click", () => {
     if (setupTextarea.value) {
         const userInput = setupTextarea.value
